@@ -4,8 +4,33 @@
   <meta charset="utf-8">
   <title>Happy Birthday!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 </head>
+
 <body>
   <div id="root"></div>
+  <script>
+    var audio = (function () {
+      var _audio = new Audio();
+      _audio.src = 'https://www.w3school.com.cn/i/song.ogg';
+      _audio.load();
+      return _audio;
+    })()
+    console.log('ready');
+    // 微信配置信息（即使不正确也没问题)
+    wx.config({
+      debug: false,
+      appId: '',
+      timestamp: 1,
+      nonceStr: '',
+      signature: '',
+      jsApiList: []
+    });
+    // 在ready时触发相关事件
+    wx.ready(function () {
+      // 触发一下play事件
+      audio.play();
+    });
+  </script>
 <script src="bundle.js"></script></body>
 </html>
